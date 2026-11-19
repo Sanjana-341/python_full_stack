@@ -1,0 +1,11 @@
+<html lang="en">
+<head>
+</head>
+<body>
+    <h1>Welcome ,{{request.User.username}}</h1>
+    <form action="{%url 'logout%'} " method="POST">
+        {% csrf_token %}
+        <button type="Submit">Logout</button>
+    </form>
+</body>
+</html>

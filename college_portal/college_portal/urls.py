@@ -23,5 +23,8 @@ urlpatterns = [
     path('about/',views.about,name='about'),
     path('contact/',views.contact,name='contact'),
     path('add/',views.forms,name='add'),
-    path('add_form/',views.Student_form_dj)
+    path('add_form/',views.Student_form_dj),
+    path('login/',views.user_login,name='login'),
+    path('dashboard/',views.dashboard,name='dashboard'),
+    path('logout/',views.user_logout,name='logout')
 ]
