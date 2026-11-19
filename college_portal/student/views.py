@@ -58,8 +58,64 @@ def user_login(request):
 @login_required(login_url='login')
 def dashboard(request):
     return render(request,'dashboard.html')
+
+from django.contrib.auth import logout
+from django.http import HttpResponse
+
+
+from django.contrib.auth import logout
+from django.http import HttpResponse
+
 def user_logout(request):
-    if request.method=='POST':
+    if request.method == 'POST':
         logout(request)
-        return HttpResponse("You have logged out successfully!")
-    return HttpResponse("Invalid request!")
+        return HttpResponse("""
+            <html>
+            <head>
+                <title>Logout Successful</title>
+                <style>
+                    body {
+                        font-family: Arial, sans-serif;
+                        background: linear-gradient(135deg, #667eea, #764ba2);
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
+                        height: 100vh;
+                        margin: 0;
+                    }
+
+                    .container {
+                        background: white;
+                        padding: 40px;
+                        border-radius: 15px;
+                        text-align: center;
+                        box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+                    }
+
+                    h2 {
+                        color: #28a745;
+                    }
+
+                    p {
+                        color: #555;
+                        font-size: 16px;
+                    }
+                </style>
+            </head>
+            <body>
+                <div class="container">
+                    <h2>✓ Logout Successful!</h2>
+                    <p>You have logged out successfully.</p>
+                </div>
+            </body>
+            </html>
+        """)
+
+    return HttpResponse("""
+        <html>
+        <body style="background:#fff0f0; text-align:center; padding:100px;">
+            <h2 style="color:red;">⚠ Invalid Request!</h2>
+            <p>Please try again.</p>
+        </body>
+        </html>
+    """)
